@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mark Brito</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      /* Switch estilizado com sol e lua */
+      #switch {
+        width: 64px;
+        height: 40px;
+        border: none;
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        transition: background 0.3s ease;
+      }
+
+      #switch .handle {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        left: 4px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #switch .handle .icon-sun,
+      #switch .handle .icon-moon {
+        width: 18px;
+        height: 18px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+      }
+
+      #switch .handle .icon-sun {
+        background-image: url("./assets/sun.svg");
+      }
+
+      #switch .handle .icon-moon {
+        background-image: url("./assets/moon.svg");
+        opacity: 0;
+      }
+
+      [data-theme="dark"] #switch .handle {
+        left: 28px;
+      }
+
+      [data-theme="dark"] #switch .handle .icon-sun {
+        opacity: 0;
+      }
+
+      [data-theme="dark"] #switch .handle .icon-moon {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="profile">
+        <img
+          id="avatar"
+          src="./assents/assets/avatar-light.png"
+          alt="Foto de Mark Brito sorrindo, usando óculos, com fundo amarelo"
+        />
+        <p>@MarkBrito</p>
+      </div>
+
+      <!-- botão de switch -->
+      <button id="switch" aria-label="Trocar tema">
+        <div class="handle">
+          <div class="icon-sun"></div>
+          <div class="icon-moon"></div>
+        </div>
+      </button>
+
+      <ul>
+        <li><a href="#">Inscrever-se no NLW</a></li>
+        <li><a href="#">Baixar meu e-book</a></li>
+        <li><a href="#">Ver meu Portfólio</a></li>
+        <li><a href="#">Conheça o Explorer</a></li>
+      </ul>
+    </div>
+
+    <div id="social-links">
+      <a href="https://youtube.com/maybrito" target="_blank">
+        <ion-icon name="logo-youtube"></ion-icon>
+      </a>
+      <a href="https://instagram.com/maybrito" target="_blank">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </a>
+      <a href="https://github.com/maybrito" target="_blank">
+        <ion-icon name="logo-github"></ion-icon>
+      </a>
+      <a href="https://linkedin.com/in/maybrito" target="_blank">
+        <ion-icon name="logo-linkedin"></ion-icon>
+      </a>
+    </div>
+
+    <footer>
+      Feito com 🤍 pela <a href="https://rocketseat.com.br/">Rocketseat</a>
+    </footer>
+
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Script para trocar tema e avatar -->
+    <script>
+      const switchButton = document.getElementById("switch")
+      const handle = switchButton.querySelector(".handle")
+      const html = document.documentElement
+      const avatar = document.getElementById("avatar")
+
+      switchButton.addEventListener("click", () => {
+        if (html.getAttribute("data-theme") === "light") {
+          html.setAttribute("data-theme", "dark")
+          handle.style.left = "28px" // move bolinha para a direita
+          avatar.src = "./assents/assets/avatar.png" // avatar tema escuro
+        } else {
+          html.setAttribute("data-theme", "light")
+          handle.style.left = "4px" // volta para a esquerda
+          avatar.src = "./assents/assets/avatar-light.png" // avatar tema claro
+        }
+      })
+    </script>
+  </body>
+</html>
